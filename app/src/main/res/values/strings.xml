@@ -4,4 +4,6 @@
     <string name="btn_blue">Bluetooth</string>
     <string name="use_message">Please choose the method you would like to use</string>
     <string name="app_icon">App Icon</string>
+    <string name="start_btn">Start Scan</string>
+    <string name="ap_name">Enter name of AP/Device</string>
 </resources>
