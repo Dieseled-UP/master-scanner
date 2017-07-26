@@ -6,26 +6,27 @@
     android:layout_height="match_parent"
     tools:context="com.bournedev.masterscanner.BluetoothActivity">
 
+    <Switch
+        android:id="@+id/trans_receive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:showText="true"
+        android:textOff="@string/scanner"
+        android:textOn="@string/transmitter"
+        android:textSize="24sp"
+        android:thumb="@drawable/custom_selector"
+        android:track="@drawable/custom_track"/>
+
     <LinearLayout
         android:id="@+id/btns"
+        android:layout_below="@+id/trans_receive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_margin="15dp"
-        android:orientation="vertical" >
-
-        <Switch
-            android:id="@+id/trans_receive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="@string/bluetooth_choice"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+        android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/start_blue"
@@ -50,7 +51,6 @@
                 android:text="@string/stop_scan" />
 
         </LinearLayout>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_below="@+id/btns"

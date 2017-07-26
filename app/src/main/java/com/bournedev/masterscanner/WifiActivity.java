@@ -9,6 +9,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -56,6 +57,8 @@ public class WifiActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         mListView = (ListView) findViewById(R.id.listView1);
 
@@ -232,8 +235,10 @@ public class WifiActivity extends AppCompatActivity {
 
         super.onPause();
 
-        myTimer.cancel();
-        myTimer.purge();
+        if (myTimer != null) {
+            myTimer.cancel();
+            myTimer.purge();
+        }
         // Unregister the Receiver
         unregisterReceiver(mWifiScanReceiver);
     }
@@ -252,8 +257,10 @@ public class WifiActivity extends AppCompatActivity {
 
         super.onDestroy();
 
-        myTimer.cancel();
-        myTimer.purge();
+        if (myTimer != null) {
+            myTimer.cancel();
+            myTimer.purge();
+        }
     }
 
     /**
