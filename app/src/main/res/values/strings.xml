@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Master Scanner</string>
+    <string name="btn_wifi">Wi-Fi</string>
+    <string name="btn_blue">Bluetooth</string>
+    <string name="use_message">Please choose the method you would like to use</string>
+    <string name="app_icon">App Icon</string>
 </resources>
