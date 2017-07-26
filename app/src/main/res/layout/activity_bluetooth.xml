@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bournedev.masterscanner.WifiActivity">
+    tools:context="com.bournedev.masterscanner.BluetoothActivity">
 
     <LinearLayout
         android:id="@+id/btns"
@@ -14,12 +14,26 @@
         android:layout_margin="15dp"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/start"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_button"
-            android:text="@string/start_btn" />
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:text="@string/start_btn" />
+
+            <Switch
+                android:id="@+id/trans_receive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:checked="false"
+                android:text="@string/bluetooth_choice"/>
+        </LinearLayout>
 
         <TextView
             android:labelFor="@+id/ap_choice"

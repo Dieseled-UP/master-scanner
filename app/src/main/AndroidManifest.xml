@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".WifiActivity">
         </activity>
+        <activity android:name=".BluetoothActivity">
+        </activity>
     </application>
 
 </manifest>
