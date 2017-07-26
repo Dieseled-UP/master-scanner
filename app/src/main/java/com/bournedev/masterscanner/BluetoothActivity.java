@@ -173,7 +173,6 @@ public class BluetoothActivity extends AppCompatActivity {
 
         if (advertiser != null) {
             advertiser.stopAdvertising(advertisingCallback);
-            advertisingCallback = null;
         }
         btAdapter.cancelDiscovery();
     }
@@ -185,7 +184,6 @@ public class BluetoothActivity extends AppCompatActivity {
 
         if (advertiser != null) {
             advertiser.stopAdvertising(advertisingCallback);
-            advertisingCallback = null;
         }
         btAdapter.cancelDiscovery();
     }
@@ -332,7 +330,6 @@ public class BluetoothActivity extends AppCompatActivity {
         btnScan.setEnabled(true);
         if (advertiser != null) {
             advertiser.stopAdvertising(advertisingCallback);
-            advertisingCallback = null;
         }
     }
 
