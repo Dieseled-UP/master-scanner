@@ -171,6 +171,22 @@ public class BluetoothActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
+        if (advertiser != null) {
+            advertiser.stopAdvertising(advertisingCallback);
+            advertisingCallback = null;
+        }
+        btAdapter.cancelDiscovery();
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+
+        if (advertiser != null) {
+            advertiser.stopAdvertising(advertisingCallback);
+            advertisingCallback = null;
+        }
         btAdapter.cancelDiscovery();
     }
 
@@ -314,7 +330,10 @@ public class BluetoothActivity extends AppCompatActivity {
     private void stopTransmit() {
 
         btnScan.setEnabled(true);
-        advertiser.stopAdvertising(advertisingCallback);
+        if (advertiser != null) {
+            advertiser.stopAdvertising(advertisingCallback);
+            advertisingCallback = null;
+        }
     }
 
     /**
