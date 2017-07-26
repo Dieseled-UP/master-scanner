@@ -23,16 +23,22 @@
                 android:id="@+id/start_wifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:padding="5dp"
                 android:background="@drawable/round_button"
-                android:text="@string/start_btn" />
+                android:textColor="@color/font_color"
+                android:text="@string/start_scan" />
 
             <Button
                 android:id="@+id/stop_wifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:padding="5dp"
                 android:background="@drawable/round_button"
-                android:text="@string/stop_btn" />
+                android:textColor="@color/font_color"
+                android:text="@string/stop_scan" />
 
         </LinearLayout>
 

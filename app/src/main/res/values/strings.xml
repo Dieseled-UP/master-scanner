@@ -4,8 +4,10 @@
     <string name="btn_blue">Bluetooth</string>
     <string name="use_message">Please choose the method you would like to use</string>
     <string name="app_icon">App Icon</string>
-    <string name="start_btn">Start Scan</string>
-    <string name="stop_btn">Stop Scan</string>
+    <string name="start_scan">Start Scan</string>
+    <string name="stop_scan">Stop Scan</string>
+    <string name="start_trans">Start Transmit</string>
+    <string name="stop_trans">Stop Transmit</string>
     <string name="ap_name">Enter name of AP/Device</string>
-    <string name="bluetooth_choice">Transmit/Scan</string>
+    <string name="bluetooth_choice">Transmitter/Scanner</string>
 </resources>
