@@ -2,7 +2,6 @@ package com.bournedev.masterscanner;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.AdvertiseCallback;
 import android.bluetooth.le.AdvertiseData;
@@ -20,19 +19,23 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ParcelUuid;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import java.nio.charset.Charset;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class BluetoothActivity extends AppCompatActivity {
@@ -46,9 +49,9 @@ public class BluetoothActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
     private Button btnScan;
     private ListView listViewLE;
-    private List<BluetoothDevice> listBluetoothDevice;
+    private ArrayAdapter<String> mArrayAdapter;
+    private List<String> listBluetoothDevice = new ArrayList<>();;
     private Handler handler;
-    private boolean scanning = true;
     private static final long SCAN_PERIOD = 10000;
     private static DecimalFormat df = new DecimalFormat("#.###");
 
@@ -136,10 +139,6 @@ public class BluetoothActivity extends AppCompatActivity {
         });
 
         listViewLE = (ListView) findViewById(R.id.listView1);
-
-        listBluetoothDevice = new ArrayList<>();
-        ListAdapter adapterLeScanResult = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listBluetoothDevice);
-        listViewLE.setAdapter(adapterLeScanResult);
     }
 
     private void getBluetoothAdapterAndLeScanner() {
@@ -216,21 +215,45 @@ public class BluetoothActivity extends AppCompatActivity {
 
             super.onScanResult(callbackType, result);
 
+            Log.i(TAG, "Clear details to refresh the screen for each new scan");
+            // Clear details to refresh the screen for each new scan
+            if (listBluetoothDevice.size() > 0) {
+                try {
+                    listBluetoothDevice.clear();
+                    mArrayAdapter.clear();
+                    mArrayAdapter.notifyDataSetChanged();
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
             if (result == null || result.getDevice() == null) {
                 return;
             }
 
             try {
 
-                String uuid = String.valueOf(result.getRssi());
-                String name = result.getDevice().getName();
-                Log.i(TAG, uuid + ", " + name);
+                rssi = String.valueOf(result.getRssi());
+                name = result.getDevice().getName();
+                distance = String.valueOf(calculateDistance(result.getRssi()));
+
+                String apDetails = "AP: " + name + "\n" +
+                        "RSSI: " + rssi + "\n" +
+                        "Distance: " + distance + "\n";
+
+                Log.i(TAG, apDetails);
+
+                listBluetoothDevice.add(apDetails);
+
             } catch (NullPointerException e) {
 
                 Log.e(TAG, e.getMessage());
             }
 
-            addBluetoothDevice(result.getDevice());
+            // Display details in ListView
+            mArrayAdapter = new ArrayAdapter<>(getApplicationContext(),
+                    android.R.layout.simple_list_item_1, listBluetoothDevice);
+            listViewLE.setAdapter(mArrayAdapter);
         }
 
         @Override
@@ -246,14 +269,25 @@ public class BluetoothActivity extends AppCompatActivity {
             Toast.makeText(BluetoothActivity.this, "onScanFailed: " + String.valueOf(errorCode), Toast.LENGTH_LONG).show();
         }
 
-        private void addBluetoothDevice(BluetoothDevice device) {
+        // Create a StringRequest and add ssid and rssi as the parameters
+        /*StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+                response -> Toast.makeText(BluetoothActivity.this, response, Toast.LENGTH_SHORT).show(),
+                error -> Toast.makeText(BluetoothActivity.this, error.toString(), Toast.LENGTH_LONG).show()) {
+            @Override
+            protected Map<String, String> getParams() {
 
-            if (!listBluetoothDevice.contains(device)) {
-
-                listBluetoothDevice.add(device);
-                listViewLE.invalidateViews();
+                Map<String, String> params = new HashMap<>();
+                params.put(KEY_SSID, name);
+                params.put(KEY_RSSI, rssi);
+                params.put(KEY_DISTANCE, distance);
+                return params;
             }
-        }
+
+        };
+
+        // Create the RequestQueue and add the new StringRequest
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);*/
     };
 
     private void discover() {
@@ -283,7 +317,6 @@ public class BluetoothActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Scan timeout", Toast.LENGTH_LONG).show();
 
-            scanning = false;
             btnScan.setEnabled(true);
 
         }, SCAN_PERIOD);
