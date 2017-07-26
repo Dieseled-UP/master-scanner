@@ -20,7 +20,7 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/start"
+                android:id="@+id/start_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_button"
@@ -36,7 +36,7 @@
         </LinearLayout>
 
         <TextView
-            android:labelFor="@+id/ap_choice"
+            android:labelFor="@+id/blue_ap_choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
