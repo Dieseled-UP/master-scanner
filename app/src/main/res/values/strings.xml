@@ -9,5 +9,6 @@
     <string name="start_trans">Start Transmit</string>
     <string name="stop_trans">Stop Transmit</string>
     <string name="ap_name">Enter name of AP/Device</string>
-    <string name="bluetooth_choice">Transmitter/Scanner</string>
+    <string name="bluetooth_choice">Scanner / Transmitter</string>
+    <string name="ble_uuid">6305f6a6-57b9-4796-b9af-5da5b56e3f51</string>
 </resources>
