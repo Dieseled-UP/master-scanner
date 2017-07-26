@@ -206,7 +206,15 @@ public class BluetoothActivity extends AppCompatActivity {
                 return;
             }
 
-            Log.i(TAG, result.getDevice().getName() + "\n" + new String(result.getScanRecord().getServiceData(result.getScanRecord().getServiceUuids().get(0)), Charset.forName("UTF-8")));
+            try {
+
+                String uuid = String.valueOf(result.getRssi());
+                String name = result.getDevice().getName();
+                Log.i(TAG, uuid + ", " + name);
+            } catch (NullPointerException e) {
+
+                Log.e(TAG, e.getMessage());
+            }
 
             addBluetoothDevice(result.getDevice());
         }
@@ -284,7 +292,6 @@ public class BluetoothActivity extends AppCompatActivity {
         AdvertiseData data = new AdvertiseData.Builder()
                 .setIncludeDeviceName(true)
                 .addServiceUuid(pUuid)
-                .addServiceData(pUuid, "Data".getBytes(Charset.forName("UTF-8")))
                 .build();
 
         advertisingCallback = new AdvertiseCallback() {
