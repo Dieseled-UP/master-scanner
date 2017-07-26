@@ -125,11 +125,11 @@ public class BluetoothActivity extends AppCompatActivity {
 
         btnStop.setOnClickListener(v -> {
 
-            if (btnScan.getText().toString().equalsIgnoreCase("stop scan")) {
+            if (btnStop.getText().toString().equalsIgnoreCase("Stop Scan")) {
 
                 btAdapter.cancelDiscovery();
 
-            } else if (btnScan.getText().toString().equalsIgnoreCase("stop transmit")) {
+            } else if (btnStop.getText().toString().equalsIgnoreCase("Stop Transmit")) {
 
                 stopTransmit();
             }
