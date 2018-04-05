@@ -205,7 +205,7 @@ public class BluetoothStandardActivity extends AppCompatActivity {
 
         UwbBleHybrid device = new UwbBleHybrid(trackedDevice, rssi);
 
-        mDatabase.child("reads").child(android.os.Build.MODEL).setValue(device);
+        mDatabase.child("network-1").child("tag-2").setValue(device);
     }
 
     /**
