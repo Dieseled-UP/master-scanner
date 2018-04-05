@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bournedev.masterscanner.BluetoothLEActivity">
+    tools:context=".BluetoothStandardActivity">
 
     <Switch
         android:id="@+id/trans_receive"
@@ -28,31 +28,31 @@
         android:layout_margin="15dp"
         android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/start_blue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="?android:attr/buttonBarButtonStyle"
-                android:padding="5dp"
-                android:background="@drawable/btn_round_enabled"
-                android:enabled="true"
-                android:textColor="@color/font_color"
-                android:text="@string/start_scan" />
+        <Button
+            android:id="@+id/start_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:padding="5dp"
+            android:background="@drawable/btn_round_enabled"
+            android:enabled="true"
+            android:textColor="@color/font_color"
+            android:text="@string/start_scan" />
 
-            <Button
-                android:id="@+id/stop_blue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="50dp"
-                style="?android:attr/buttonBarButtonStyle"
-                android:padding="5dp"
-                android:background="@drawable/btn_round_enabled"
-                android:textColor="@color/font_color"
-                android:text="@string/stop_scan" />
+        <Button
+            android:id="@+id/stop_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="50dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:padding="5dp"
+            android:background="@drawable/btn_round_enabled"
+            android:textColor="@color/font_color"
+            android:text="@string/stop_scan" />
 
-        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_below="@+id/btns"

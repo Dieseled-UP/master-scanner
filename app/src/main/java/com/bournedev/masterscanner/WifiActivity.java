@@ -15,11 +15,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/*
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.Volley;*/
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -207,7 +207,7 @@ public class WifiActivity extends AppCompatActivity {
             mArrayAdapter = new ArrayAdapter<>(getApplicationContext(),
                     android.R.layout.simple_list_item_1, mArrayList);
             mListView.setAdapter(mArrayAdapter);
-
+/*
             // Create a StringRequest and add ssid and rssi as the parameters
             StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                     response -> Toast.makeText(WifiActivity.this, response, Toast.LENGTH_SHORT).show(),
@@ -226,7 +226,7 @@ public class WifiActivity extends AppCompatActivity {
 
             // Create the RequestQueue and add the new StringRequest
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            requestQueue.add(stringRequest);
+            requestQueue.add(stringRequest);*/
         }
     }
 

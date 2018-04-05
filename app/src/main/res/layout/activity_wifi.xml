@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 style="?android:attr/buttonBarButtonStyle"
                 android:padding="5dp"
-                android:background="@drawable/round_button"
+                android:background="@drawable/btn_round_enabled"
                 android:textColor="@color/font_color"
                 android:text="@string/start_scan" />
 
@@ -36,7 +36,7 @@
                 android:layout_marginStart="50dp"
                 style="?android:attr/buttonBarButtonStyle"
                 android:padding="5dp"
-                android:background="@drawable/round_button"
+                android:background="@drawable/btn_round_enabled"
                 android:textColor="@color/font_color"
                 android:text="@string/stop_scan" />
 

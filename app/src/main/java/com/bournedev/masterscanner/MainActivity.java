@@ -30,17 +30,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Move to the Wi-Fi activity
-        Button wifi = (Button) findViewById(R.id.btn_wifi);
+        Button wifi = findViewById(R.id.btn_wifi);
         wifi.setOnClickListener(v -> {
 
             Intent intentWifi = new Intent(this, WifiActivity.class);
             startActivity(intentWifi);
         });
-        // Move to the Bluetooth activity
-        Button blue = (Button) findViewById(R.id.btn_blue);
+        // Move to the BLE activity
+        Button blue = findViewById(R.id.btn_blue);
         blue.setOnClickListener(v -> {
 
-            Intent intentBlue = new Intent(this, BluetoothActivity.class);
+            Intent intentBlue = new Intent(this, BluetoothStandardActivity.class);
+            startActivity(intentBlue);
+        });
+        // Move to the BLE activity
+        Button ble = findViewById(R.id.btn_ble);
+        ble.setOnClickListener(v -> {
+
+            Intent intentBlue = new Intent(this, BluetoothLEActivity.class);
             startActivity(intentBlue);
         });
     }
@@ -77,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
         if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
             permissionsList.add(permission);
             // Check for Rationale Option
-            if (!shouldShowRequestPermissionRationale(permission))
-                return false;
+            return shouldShowRequestPermissionRationale(permission);
         }
         return true;
     }

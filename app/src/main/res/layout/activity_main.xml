@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -19,26 +19,35 @@
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/btn_round_enabled"
             android:text="@string/btn_wifi"
             android:textColor="@color/font_color"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <Button
-            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/btn_blue"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:background="@color/transparent" />
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/btn_round_enabled"
+            android:text="@string/btn_bluetooth_standard"
+            android:textColor="@color/font_color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <Button
-            android:id="@+id/btn_blue"
+            android:id="@+id/btn_ble"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
-            android:text="@string/btn_blue"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/btn_round_enabled"
+            android:text="@string/btn_ble"
             android:textColor="@color/font_color"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

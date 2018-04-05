@@ -3,8 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="round_btn">#ff6b0f</color>
+    <color name="btn_enabled">#ff6b0f</color>
     <color name="back">#0f7bff</color>
     <color name="transparent">#00ffffff</color>
     <color name="font_color">#292929</color>
+    <color name="btn_disabled">#27170432</color>
 </resources>

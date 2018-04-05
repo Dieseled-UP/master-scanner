@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Master Scanner</string>
     <string name="btn_wifi">Wi-Fi</string>
-    <string name="btn_blue">Bluetooth</string>
+    <string name="btn_ble">BLE</string>
+    <string name="btn_bluetooth_standard">Bluetooth</string>
     <string name="use_message">Please choose the method you would like to use</string>
     <string name="app_icon">App Icon</string>
     <string name="start_scan">Start Scan</string>
@@ -11,5 +12,5 @@
     <string name="ap_name">Enter name of AP/Device</string>
     <string name="scanner">Scanner</string>
     <string name="transmitter">Transmitter</string>
-    <string name="ble_uuid">6305f6a6–57b9-4796-b9af-5da5b56e3f51</string>
+    <string name="ble_uuid">6305f6a6–57b9–4796-b9af-5da5b56e3f51</string>
 </resources>
