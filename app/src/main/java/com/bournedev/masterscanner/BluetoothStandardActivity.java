@@ -20,6 +20,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +52,8 @@ public class BluetoothStandardActivity extends AppCompatActivity {
     private static final String KEY_RSSI = "rssi";
     private static final String KEY_DISTANCE = "distance";
 
+    private DatabaseReference mDatabase;
+
     private String name;
     private String rssi;
     private String distance;
@@ -65,8 +70,8 @@ public class BluetoothStandardActivity extends AppCompatActivity {
         mListView = findViewById(R.id.listView1);
 
         // Initializes Bluetooth adapter.
-        mBluetoothScanReceiver = new BluetoothScanReceiver();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // If bluetooth is not switched on
         if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
@@ -128,7 +133,11 @@ public class BluetoothStandardActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Device Added " + " : " + device.getName(), Toast.LENGTH_SHORT).show();
 
                     // Force name for null values stop app crashing
-                    name = "Bluetooth device";
+                    if (device.getName() == null) {
+                        name = "Bluetooth device";
+                    } else {
+                        name = device.getName();
+                    }
                     rssi = Short.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
                     distance = String.valueOf(calculateDistance(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE)));
 
@@ -142,6 +151,10 @@ public class BluetoothStandardActivity extends AppCompatActivity {
                 mArrayAdapter = new ArrayAdapter<>(getApplicationContext(),
                         android.R.layout.simple_list_item_1, mList);
                 mListView.setAdapter(mArrayAdapter);
+
+                writeNewRead(name, rssi);
+
+
 /*
                 // Create a StringRequest and add ssid and rssi as the parameters
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
@@ -188,6 +201,13 @@ public class BluetoothStandardActivity extends AppCompatActivity {
         }
     }
 
+    private void writeNewRead(String trackedDevice, String rssi) {
+
+        UwbBleHybrid device = new UwbBleHybrid(trackedDevice, rssi);
+
+        mDatabase.child("reads").child(android.os.Build.MODEL).setValue(device);
+    }
+
     /**
      * Method to allow user to access a single access point
      *
@@ -220,12 +240,7 @@ public class BluetoothStandardActivity extends AppCompatActivity {
 
     private void stopScan() {
 
-        if (mBluetoothAdapter != null) {
-            mBluetoothAdapter.cancelDiscovery();
-        }
-
-        // Unregister broadcast listeners
-        unregisterReceiver(mBluetoothScanReceiver);
+        onPause();
     }
 
     @Override
