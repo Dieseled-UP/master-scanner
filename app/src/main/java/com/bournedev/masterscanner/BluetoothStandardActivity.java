@@ -203,9 +203,9 @@ public class BluetoothStandardActivity extends AppCompatActivity {
 
     private void writeNewRead(String trackedDevice, String rssi) {
 
-        UwbBleHybrid device = new UwbBleHybrid(trackedDevice, rssi);
+        UwbBleHybrid device = new UwbBleHybrid("tag-1", trackedDevice, rssi);
 
-        mDatabase.child("network-1").child("tag-2").setValue(device);
+        mDatabase.child("network-1").child("tag-1").setValue(device);
     }
 
     /**
